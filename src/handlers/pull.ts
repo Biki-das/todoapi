@@ -1,4 +1,3 @@
-import type { PatchOperation, PullResponse } from "replicache";
 import type { Request, Response, NextFunction } from "express";
 import prisma from "../db";
 
@@ -69,7 +68,7 @@ async function pull(req, res: Response) {
         console.log(changed);
 
         // Build response patch
-        const patch: PatchOperation[] = changed.map((row) => {
+        const patch = changed.map((row) => {
           if (row.deleted) {
             return {
               op: "del",

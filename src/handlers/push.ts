@@ -1,5 +1,4 @@
 import prisma from "../db";
-import type { MutationV1, PushRequestV1 } from "replicache";
 import type { Request, Response, NextFunction } from "express";
 import { Octokit } from "@octokit/core";
 
@@ -56,7 +55,7 @@ async function updateGitHubIssue(
 }
 
 async function push(req) {
-  const push: PushRequestV1 = req.body;
+  const push = req.body;
   const userId = req.user.id;
   const id = req.body.id;
 
@@ -102,7 +101,7 @@ async function push(req) {
 
 async function processMutation(
   clientGroupID: string,
-  mutation: MutationV1,
+  mutation,
   userId: string,
   id: string,
   error?: string
