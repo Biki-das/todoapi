@@ -1,5 +1,4 @@
 import express from "express";
-import router from "./router";
 import morgan from "morgan";
 import cors from "cors";
 import { protect } from "./modules/auth";
@@ -20,7 +19,7 @@ app.get("/", (req, res) => {
   res.json({ location: "home route" });
 });
 
-app.use("/api", protect, router);
+app.use("/api", protect);
 app.post("/api/replicache/pull", handlePull);
 app.post("/api/replicache/push", handlePush);
 app.post("/user", createNewUser);
